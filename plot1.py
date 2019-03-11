@@ -1,0 +1,27 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+fichier= np.loadtxt('MEXP1.out')
+fichier2= np.loadtxt('MEXP2.out')
+fichier3= np.loadtxt('MEXP3.out')
+fichier4= np.loadtxt('MEXP4.out')
+fichier5= np.loadtxt('MEXP5.out')
+
+plt.figure(figsize=(14,12))
+axes = plt.gca()
+plt.grid(True)
+plt.xlabel('Scale factor')
+plt.ylabel('Evolution of energy density')
+plt.plot(fichier[:,1],fichier[:,5], label=r'$\Omega_{b}$ baryon density')
+plt.plot(fichier[:,1],fichier[:,4], label=r'$\Omega_{r}$ radiation density')
+plt.plot(fichier[:,1],fichier[:,7], label=r'$\Omega_{\Lambda}$ dark energy density')
+plt.plot(fichier[:,1],fichier[:,6], label=r'$\Omega_{\phi}$ field density $(\phi=10^{4}kg^{1/2}m^{-3/2}s$, $\dot{\phi}=10^{7}kg^{1/2}m^{-3/2})$')
+plt.plot(fichier2[:,1],fichier2[:,6], label=r'$\Omega_{\phi}$ field density $(\phi=3\times 10^{4}kg^{1/2}m^{-3/2}s$, $\dot{\phi}=10^{7}kg^{1/2}m^{-3/2})$')
+plt.plot(fichier3[:,1],fichier3[:,6], label=r'$\Omega_{\phi}$ field density $(\phi=5\times 10^{4}kg^{1/2}m^{-3/2}s$, $\dot{\phi}=5\times 10^{8}kg^{1/2}m^{-3/2})$')
+plt.plot(fichier5[:,1],fichier5[:,6], label=r'$\Omega_{\phi}$ field density $(\phi=5\times 10^{4}kg^{1/2}m^{-3/2}s$, $\dot{\phi}=10^{12}kg^{1/2}m^{-3/2})$')
+plt.yscale('log')
+plt.xscale('log')
+axes.set_xlim(1.e-12,1)
+axes.set_ylim(1.e-4,1.e44)
+plt.legend(loc='upper right')
+plt.show()

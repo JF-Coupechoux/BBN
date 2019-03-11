@@ -1,0 +1,25 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+fichier= np.loadtxt('MQ.out')
+fichier2= np.loadtxt('MQ1.out')
+fichier3= np.loadtxt('MQ2.out')
+fichier4= np.loadtxt('MQ3.out')
+
+plt.figure(figsize=(12,8))
+axes = plt.gca()
+plt.grid(True)
+plt.xlabel('Scale factor')
+plt.ylabel('Evolution of energy density')
+plt.plot(fichier[:,1],fichier[:,5], label=r'$\Omega_{b}$ baryon density')
+plt.plot(fichier[:,1],fichier[:,4], label=r'$\Omega_{r}$ radiation density')
+plt.plot(fichier[:,1],fichier[:,6], label=r'$\Omega_{\phi}$ field density $(Q=0kg.m^{-3}s,$ $\lambda=0)$')
+plt.plot(fichier2[:,1],fichier2[:,6], label=r'$\Omega_{\phi}$ field density $(Q=10^{-24}kg.m^{-3}s,$ $\lambda=0)$')
+plt.plot(fichier3[:,1],fichier3[:,6], label=r'$\Omega_{\phi}$ field density $(Q=10^{-25}kg.m^{-3}s,$ $\lambda=0)$')
+plt.plot(fichier4[:,1],fichier4[:,6], label=r'$\Omega_{\phi}$ field density $(Q=10^{-24}kg.m^{-3}s,$ $\lambda=10^{-98})$')
+plt.yscale('log')
+plt.xscale('log')
+axes.set_xlim(1.e-12,1)
+axes.set_ylim(1.e-4,1.e44)
+plt.legend(loc='upper right')
+plt.show()
